@@ -41,6 +41,9 @@ async function getLocalStream() {
             audio: false
         });
         localView.srcObject = localStream;
+        localView.onloadedmetadata = evt => {
+            localRes.textContent = `local resolution: ${remoteView.videoWidth} x ${remoteView.videoHeight}`;
+        };
         localView.play();
     } catch (err) {
         console.log(err);
@@ -51,6 +54,9 @@ function callEventHandler(call) {
     call.on('stream', async stream => {
         remoteStream = stream;
         remoteView.srcObject = stream;
+        remoteView.onloadedmetadata = evt => {
+            remoteRes.textContent = `remote resolution: ${remoteView.videoWidth} x ${remoteView.videoHeight}`;
+        };
         remoteView.play();
         btnRecord.disabled = false;
     });
