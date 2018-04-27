@@ -49,7 +49,7 @@ function callEventHandler(call) {
     call.on('stream', async stream => {
         remoteStream = stream;
         remoteView.srcObject = stream;
-        remoteView.play();
+        remoteView.play(); 
         if(!localStream) {
             await getLocalStream();
         }
