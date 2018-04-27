@@ -37,7 +37,7 @@ btnConnect.onclick = async evt => {
 async function getLocalStream() {
     try {
         localStream = await navigator.mediaDevices.getUserMedia({
-            video: true,
+            video: { width: 1280, height: 720 },
             audio: false
         });
         localView.srcObject = localStream;
