@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="style.css" rel="stylesheet">
-    </head>
-    <body>
-            <div id="localRes"></div>
-            <div id="remoteRes"></div>
-            <div>
-            <button id="btnConnect">connect</button>
-            <button id="btnRecord">record</button>
-            <button id="btnSnapshot">SnapShot</button>
-        </div>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="localRes"></div>
+    <div id="remoteRes"></div>
+    <div>
+        <a id="dlLink"></a>
+    </div>
+    <div>
+        <button id="btnConnect">connect</button>
+        <button id="btnRecord">record</button>
+        <button id="btnSnapshot">SnapShot</button>
+    </div>
     <video id="localView" playsinline></video>
     <video id="remoteView" playsinline></video>
     <video id="recordView" controls></video>
     <script type="text/javascript" src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
     <script src="main.js"></script>
-    </body>
+</body>
+
 </html>

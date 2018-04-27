@@ -74,7 +74,10 @@ btnRecord.onclick = evt => {
         };
         mediaRecorder.onstop = evt => {
             const blob = new Blob(recordChunks, { type: 'video/webm' });
-            recordView.src = URL.createObjectURL(blob);
+            dlLink.textContent = 'download';
+            dlLink.download = 'rec.webm';
+            dlLink.href = recordView.src = URL.createObjectURL(blob);
+
             recordView.onloadedmetadata = _ => {
                 if (recordView.duration === Infinity) {
                     recordView.currentTime = 1e101;
