@@ -68,6 +68,7 @@ btnRecord.onclick = evt => {
             const blob = new Blob(chunks);
             recordView.src = URL.createObjectURL(blob);
         };
+        mediaRecorder.start();
     } else if (btnRecord.textContent === 'stop') {
         btnRecord.textContent = 'record';
         mediaRecorder.stop();
