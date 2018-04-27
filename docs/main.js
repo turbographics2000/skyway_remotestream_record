@@ -28,7 +28,8 @@ peer.on('call', async call => {
 
 btnConnect.onclick = async evt => {
     await getLocalStream();
-    peer.call(remoteId, localStream);
+    call = peer.call(remoteId, localStream);
+    callEventHandler(call);
 };
 
 async function getLocalStream() {
