@@ -7,7 +7,7 @@ let mediaConnection = null;
 let mediaRecorder = null;
 let recordChunks = [];
 const snapshotCnv = document.createElement('canvas');
-const snapshotCtx = shapshotCnv.getContext('2d');
+const snapshotCtx = snapshotCnv.getContext('2d');
 btnConnect.disabled = btnRecord = true;
 
 peer.on('open', id => {
