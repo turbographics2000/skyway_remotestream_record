@@ -13,7 +13,7 @@ btnConnect.disabled = btnRecord = true;
 peer.on('open', id => {
     myId = id;
     peer.listAllPeers(peers => {
-        remoteId = peers.filter(peerId => myId !== myId)[0];
+        remoteId = peers.filter(peerId => peerId !== myId)[0];
         if (remoteId) {
             btnConnect.disabled = false;
         }
