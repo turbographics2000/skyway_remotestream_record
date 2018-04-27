@@ -45,8 +45,8 @@ async function getLocalStream() {
     }
 }
 
-async function callEventHandler(call) {
-    call.on('stream', stream => {
+function callEventHandler(call) {
+    call.on('stream', async stream => {
         remoteStream = stream;
         remoteView.srcObject = stream;
         remoteView.play();
