@@ -67,8 +67,21 @@ btnRecord.onclick = evt => {
             }
         };
         mediaRecorder.onstop = evt => {
-            const blob = new Blob(recordChunks, {type: 'video/webm'});
+            const blob = new Blob(recordChunks, { type: 'video/webm' });
             recordView.src = URL.createObjectURL(blob);
+            recordView.onloadedmetadata = _ => {
+                if (recordView.duration === Infinity) {
+                    recordView.currentTime = 1e101;
+                    recordView.ontimeupdate = _ => {
+                        recordView.currentTime = 0;
+                        recordView.ontimeupdate = _ => {
+                            delete recordView.ontimeupdate;
+                            recordView.play();
+                        };
+                    };
+                }
+            };
+
         };
         mediaRecorder.start(10);
     } else if (btnRecord.textContent === 'stop') {
