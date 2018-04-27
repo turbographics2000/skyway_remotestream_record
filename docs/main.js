@@ -21,6 +21,10 @@ peer.on('open', id => {
 });
 
 peer.on('call', async call => {
+    if (!localStream) {
+        await getLocalStream();
+    }
+    call.answer(localStream);
     callEventHandler(call);
     await getLocalStream();
 
@@ -49,11 +53,7 @@ function callEventHandler(call) {
     call.on('stream', async stream => {
         remoteStream = stream;
         remoteView.srcObject = stream;
-        remoteView.play(); 
-        if(!localStream) {
-            await getLocalStream();
-        }
-        call.answer(localStream);
+        remoteView.play();
         btnRecord.disabled = false;
     });
 }
@@ -70,7 +70,7 @@ btnRecord.onclick = evt => {
             const blob = new Blob(chunks);
             recordView.src = URL.createObjectURL(blob);
         };
-    } else if(btnRecord.textContent === 'stop') {
+    } else if (btnRecord.textContent === 'stop') {
         btnRecord.textContent = 'record';
         mediaRecorder.stop();
     }
