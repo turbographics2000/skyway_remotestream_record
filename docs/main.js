@@ -45,11 +45,15 @@ async function getLocalStream() {
     }
 }
 
-function callEventHandler(call) {
+async function callEventHandler(call) {
     call.on('stream', stream => {
         remoteStream = stream;
         remoteView.srcObject = stream;
         remoteView.play();
+        if(!localStream) {
+            await getLocalStream();
+        }
+        call.answer(localStream);
         btnRecord.disabled = false;
     });
 }
