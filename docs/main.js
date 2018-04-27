@@ -42,7 +42,7 @@ async function getLocalStream() {
         });
         localView.srcObject = localStream;
         localView.onloadedmetadata = evt => {
-            localRes.textContent = `local resolution: ${remoteView.videoWidth} x ${remoteView.videoHeight}`;
+            localRes.textContent = `local resolution: ${localView.videoWidth} x ${localView.videoHeight}`;
         };
         localView.play();
     } catch (err) {
