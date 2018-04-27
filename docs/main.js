@@ -62,10 +62,10 @@ btnRecord.onclick = evt => {
         recordChunks = [];
         mediaRecorder = new MediaRecorder(remoteStream);
         mediaRecorder.ondataavailable = evt => {
-            chunks.push(evt.data);
+            recordChunks.push(evt.data);
         };
         mediaRecorder.onstop = evt => {
-            const blob = new Blob(chunks);
+            const blob = new Blob(recordChunks);
             recordView.src = URL.createObjectURL(blob);
         };
         mediaRecorder.start();
