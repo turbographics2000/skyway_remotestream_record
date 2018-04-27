@@ -60,7 +60,7 @@ btnRecord.onclick = evt => {
     if (btnRecord.textContent === 'record') {
         btnRecord.textContent = 'stop';
         recordChunks = [];
-        mediaRecorder = new MediaRecorder(remoteStream);
+        mediaRecorder = new MediaRecorder(remoteStream, {mimeType: 'video/webm; codecs=vp8'});
         mediaRecorder.ondataavailable = evt => {
             recordChunks.push(evt.data);
         };
